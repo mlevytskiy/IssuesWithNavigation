@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/on_boarding_graph"
+    app:startDestination="@id/on_boarding_1">
+
+    <fragment
+        android:id="@+id/on_boarding_1"
+        android:name="com.core.issueswithnavigation.fragment.OnBoardingFragment"
+        android:label=" ">
+
+        <action
+            android:id="@+id/action_next"
+            app:destination="@id/enter_phone_number" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/enter_phone_number"
+        android:name="com.core.issueswithnavigation.fragment.OnBoarding2Fragment"
+        android:label=" ">
+
+        <action
+            android:id="@+id/action_exit_on_boarding"
+            app:popUpTo="@id/on_boarding_1"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+</navigation>
