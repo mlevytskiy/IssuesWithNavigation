@@ -23,6 +23,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeFragmentViewModel>(R.
         if (!act.hasOnBoardingResult) {
             return
         }
+        viewModel.withDelay = true
         if (act.onBoardingResult) {
             viewModel.navToTest()
         } else {

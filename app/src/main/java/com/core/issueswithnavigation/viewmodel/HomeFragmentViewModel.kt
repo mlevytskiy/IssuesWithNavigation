@@ -2,11 +2,13 @@ package com.core.issueswithnavigation.viewmodel
 
 import com.core.issueswithnavigation.fragment.HomeFragmentDirections
 import com.library.core.BaseViewModel
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 
 class HomeFragmentViewModel @Inject constructor(): BaseViewModel() {
 
     private val directions = HomeFragmentDirections.Companion
+    var withDelay: Boolean = false
 
     override fun handleException(e: Throwable) {
         TODO("Not yet implemented")
@@ -17,11 +19,28 @@ class HomeFragmentViewModel @Inject constructor(): BaseViewModel() {
     }
 
     fun navToTest() {
-        navigate(directions.actionHomeToTest())
+        if (!withDelay) {
+            navigate(directions.actionHomeToTest())
+            return
+        }
+
+        startBgJob {
+            delay(500)
+            navigate(directions.actionHomeToTest())
+        }
+
     }
 
     fun navToTest2() {
-        navigate(directions.actionHomeToTest1())
+        if (!withDelay) {
+            navigate(directions.actionHomeToTest1())
+            return
+        }
+
+        startBgJob {
+            delay(500)
+            navigate(directions.actionHomeToTest1())
+        }
     }
 
 }
